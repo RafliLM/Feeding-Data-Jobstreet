@@ -20,13 +20,6 @@ export default {
             })
         }
     },
-    getKeywords : async () => {
-        return await prismaRepository.jobs.findMany({
-            select: {
-                keyword: true
-            }
-        })
-    },
     scrapeData : async (keyword: string) => {
         const url = `https://id.jobstreet.com/id/${keyword.toLowerCase().replace(" ", "-")}-jobs`
         const { data } = await axios.get(url)
