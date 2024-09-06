@@ -16,7 +16,7 @@ const keywords = [
     "Flutter"
 ]
 
-const url = 'http://localhost:8081/jobs'
+const url = 'http://localhost:8081/jobs/'
 
 interface Job {
     id: number,
@@ -137,8 +137,7 @@ export default function JobModal ({ modal, setModal, useAlert} : ComponentProps)
                 })
             }
             else {
-                console.log(new Date(form.listingDate))
-                fetch(`${url}/${form.id}`, {
+                fetch(`${url}${form.id}/`, {
                     method: 'PUT',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({

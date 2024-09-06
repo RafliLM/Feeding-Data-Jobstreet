@@ -53,7 +53,7 @@ export default function Navbar ({ setKeyword, keyword, openModal, useAlert } : N
     }
     const scrapeJobs = () => {
         setScrapeLoading(true)
-        fetch(`${url}/scrape/${keyword}`)
+        fetch(`${url}/scrape/${keyword}/`)
         .then(async (response) => {
             setScrapeLoading(false)
             useAlert("success", await response.text())
@@ -68,11 +68,12 @@ export default function Navbar ({ setKeyword, keyword, openModal, useAlert } : N
     const generateReport = () => {
         let filename = ''
         setGenerateLoading(true)
-        fetch(`${url}/excel`, {
+        fetch(`${url}/excel/`, {
             method: 'GET'
             })
             .then((response) => {
                 const header = response.headers.get('Content-Disposition');
+                console.log(response)
                 const parts = header!.split(';');
                 filename = parts[1].split('=')[1];
                 return response.blob()

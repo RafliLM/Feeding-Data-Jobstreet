@@ -17,7 +17,7 @@ interface ContentProps {
     useAlert: (status: 'error' | 'info' | 'success' | 'warning', message: string) => void
 }
 
-const url = 'http://localhost:8081/jobs'
+const url = 'http://localhost:8081/jobs/'
 
 interface Job {
     id: number,
@@ -63,7 +63,7 @@ export default function Content({ modal, keyword, openModal, useAlert } : Conten
     };
 
     const deleteJob = (jobId : number) => {
-        fetch(`${url}/${jobId}`, {
+        fetch(`${url}${jobId}/`, {
             method: 'DELETE'
         })
         .then(async (response) => {
